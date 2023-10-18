@@ -44,7 +44,6 @@ int display_interactive(char **av)
 		else
 			handle_logical(av, usr_input);
 	}
-
 	free(usr_input);
 	free(bye);
 	free(arr);
