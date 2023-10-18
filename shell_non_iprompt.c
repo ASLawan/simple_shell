@@ -10,5 +10,5 @@ void display_non_iprompt(void)
 {
 	char *prompt = "$ ";
 
-	_printstr(promp);
+	_printstr(prompt);
 }
