@@ -21,6 +21,7 @@ extern char **environ;
 
 
 int shell_one(char **av);
+int shell_two(char **av);
 char **parse_input(char **av, char *usr_input);
 
 
