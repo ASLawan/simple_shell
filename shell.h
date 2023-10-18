@@ -21,14 +21,7 @@ extern char **environ;
 
 
 int shell_one(char **av);
-
-
-
-
-
-
-
-
+char **parse_input(char **av, char *usr_input);
 
 
 /***** FUNCTION PROTOTYPES *******/
@@ -40,31 +33,7 @@ char *_strdup(char *str);
 int _strlen(char *s);
 int _strncmp(const char *s1, const char *s2, size_t n);
 void _printstr(char *str);
-void display_iprompt(void);
-void display_non_iprompt(void);
-/*char *get_usr_input(void);*/
-char *get_usr_input(void);
-char *get_input(void);
-char **execute_input(char **av, char *input);
-char **parse_input(char **av, char *input);
-char *_getenv(char *input);
-char *get_input_path(char *input);
-char *_strtok(char *str, const char *delim);
-
-int display_interactive(char **av);
-void display_non_interactive(char **av);
-void shell_exit(int status);
-void _shell_exit(void);
 void betty_check(void);
-char **multiple_inputs(char *input);
-
-int _setenv(char *name, char *value, int overwrite);
-int _putenv(char *name);
-int _unsetenv(char *name);
-
-void change_dir(char *dir);
-int _atoi(char *s);
-int input_check(char **arr, char *inpt);
 
 
 
