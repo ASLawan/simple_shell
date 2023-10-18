@@ -13,5 +13,5 @@ void _printstr(char *str)
 
 	str_len = _strlen(str);
 
-	write(STDOUT_FILENO, str, str_len)
+	write(STDOUT_FILENO, str, str_len);
 }
