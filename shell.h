@@ -16,6 +16,21 @@ extern char **environ;
 #include <errno.h>
 #include <sys/stat.h>
 
+
+
+
+
+int shell_one(char **av);
+
+
+
+
+
+
+
+
+
+
 /***** FUNCTION PROTOTYPES *******/
 
 char *_strcat(char *dest, char *src);
