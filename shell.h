@@ -16,5 +16,9 @@ int interact(char **av);
 int non_interact(char **av);
 void _printstr(char *str);
 
+int handle_args(char **av);
+int interact_arg(char **av);
+int non_interact_arg(char **av);
+char **parse_input(char **av, char *input);
 
 #endif
