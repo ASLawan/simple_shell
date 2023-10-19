@@ -11,10 +11,7 @@ char **parse_input(char *usr_input)
 
 	inpt_cpy = malloc(sizeof(char) * (_strlen(usr_input) + 1));
 	if (inpt_cpy == NULL)
-	{
-		free(inpt_cpy);
 		return (NULL);
-	}
 	_strcpy(inpt_cpy, usr_input);
 	tkn = strtok(usr_input, delim);
 	while (tkn != NULL)
