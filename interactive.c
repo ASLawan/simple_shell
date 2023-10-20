@@ -1,39 +1,63 @@
 #include "shell.h"
+
+int interact(char **av);
+
 /**
  * interact - interactive shell
  * @av: arg array
  * Return: 0
  */
+
 int interact(char **av)
 {
 	char *line = NULL, *tkn = NULL;
-	size_t len = 0;
+	size_t len = 512;
 	ssize_t chs;
 	pid_t pid;
 	int status;
 
+	line = malloc(sizeof(char) * len);
+	if (line == NULL)
+	{
+		perror("Error");
+		return (-1);
+	}
+
 	while (true)
 	{
 		_printstr("#cisfun$ ");
-		chs = getline(&line, &len, stdin);
+
+		chs = read(1, line, len);
+
 		if (chs == -1)
 		{
 			free(line);
 			_printstr("\n");
 			exit(0);
 		}
+
 		tkn = strtok(line, " \n");
+		if (tkn == NULL)
+		{
+			continue;
+		}
+
 		av[0] = tkn;
 		pid = fork();
+
 		if (pid < 0)
 		{
 			perror("./shell");
 		}
 		else if (pid == 0)
 		{
-			if (execve(av[0], av, environ) == -1)
+			char *new_environ[] = { NULL };
+
+			if (execve(av[0], av, new_environ) == -1)
 			{
 				perror("./shell");
+				free(line);
+				exit(EXIT_FAILURE);
 			}
 		}
 		else
