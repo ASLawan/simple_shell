@@ -31,7 +31,7 @@ void display_non_iprompt(void);
 char *get_usr_input(void);
 char *get_input(void);
 
-char **execute_input(char *input);
+int execute_input(char *input);
 char **parse_input(char *input);
 
 char *_getenv(char *input);

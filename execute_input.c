@@ -5,11 +5,11 @@ char **execute_inpute(char *usr_input);
  * @usr_input: user command
  * Return: av
  */
-char **execute_input(char *usr_input)
+int execute_input(char *usr_input)
 {
 	pid_t PID;
 	char *inpt = NULL, *inpt_to_execute = NULL, **arr;
-	int status, flag, i;
+	int status, flag, i, exit_status = 0;
 
 	arr = parse_input(usr_input);
 	inpt = arr[0];
@@ -29,7 +29,8 @@ char **execute_input(char *usr_input)
 				if (execve(inpt_to_execute, arr, environ) == -1)
 				{
 					free(inpt_to_execute);
-					perror(inpt);
+					perror("Error");
+				
 				}
 			}
 			else
@@ -40,7 +41,8 @@ char **execute_input(char *usr_input)
 		}
 		else
 		{
-			perror(inpt);
+			fprintf(stderr, "./hsh: 1: %s: not found\n", inpt);
+			exit_status = 127;
 		}
 	}
 	for (i = 0; arr[i]; i++)
@@ -48,5 +50,5 @@ char **execute_input(char *usr_input)
 		free(arr[i]);
 	}
 	free(arr);
-	return (arr);
+	return (exit_status);
 }
