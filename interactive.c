@@ -16,15 +16,16 @@ int interact(char **av)
 	pid_t pid;
 	int status;
 
-	line = malloc(sizeof(char) * len);
-	if (line == NULL)
-	{
-		perror("Error");
-		return (-1);
-	}
-
 	while (true)
 	{
+		line = malloc(sizeof(char) * len);
+
+		if (line == NULL)
+		{
+			perror("Error");
+			return (-1);
+		}
+
 		_printstr("#cisfun$ ");
 
 		chs = read(1, line, len);
@@ -39,6 +40,7 @@ int interact(char **av)
 		tkn = strtok(line, " \n");
 		if (tkn == NULL)
 		{
+			free(line);
 			continue;
 		}
 
@@ -48,6 +50,7 @@ int interact(char **av)
 		if (pid < 0)
 		{
 			perror("./shell");
+			free(line);
 		}
 		else if (pid == 0)
 		{
@@ -63,9 +66,9 @@ int interact(char **av)
 		else
 		{
 			wait(&status);
+			free(line);
 		}
 	}
 
-	free(line);
 	return (0);
 }
