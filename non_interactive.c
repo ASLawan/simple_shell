@@ -9,6 +9,7 @@
 void display_non_interactive(char **av)
 {
 	char *usr_input;
+	(void)av;
 
 	/*display prompt*/
 	display_non_iprompt();
@@ -17,7 +18,7 @@ void display_non_interactive(char **av)
 	usr_input = get_input();
 
 	/*parse and execute user input*/
-	execute_input(av, usr_input);
+	execute_input(usr_input);
 
 	free(usr_input);
 

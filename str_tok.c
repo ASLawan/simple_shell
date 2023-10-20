@@ -10,7 +10,7 @@
 char *_strtok(char *str, const char *delim)
 {
 	char *start = NULL;
-	static char *p = NULL;
+	static char *p;
 
 	if (str)
 	{

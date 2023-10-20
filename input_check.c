@@ -1,11 +1,13 @@
 #include "shell.h"
+int input_check(char **arr, char *inpt, char *usr_input);
 /**
  * input_check - executes cammands
  * @inpt: executable
  * @arr: array
+ * @usr_input: user command
  * Return: nothing
  */
-int input_check(char **arr, char *inpt)
+int input_check(char **arr, char *inpt, char *usr_input)
 {
 	char *set = "setenv", *unset = "unsetenv", *qt = "exit";
 	char *dir = "cd";
@@ -36,9 +38,9 @@ int input_check(char **arr, char *inpt)
 		}
 	}
 	if (strncmp(inpt, qt, 4) == 0 && arr[1])
-		shell_exit((atoi(arr[1])));
+		shell_exit(arr, usr_input);
 	if (strncmp(inpt, qt, 4) == 0)
-		_shell_exit();
+		_shell_exit(arr, usr_input);
 	if (strncmp(inpt, dir, 2) == 0)
 		change_dir(arr[1]);
 	return (flag);

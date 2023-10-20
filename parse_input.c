@@ -1,14 +1,13 @@
 #include "shell.h"
-char **parse_input(char **av, char *usr_input);
+char **parse_input(char *usr_input);
 /**
  * parse_input - executes commands
- * @av: arguments array
  * @usr_input: command to parse
  * Return: av
  */
-char **parse_input(char **av, char *usr_input)
+char **parse_input(char *usr_input)
 {
-	char *inpt_cpy, *delim = " \n", *tkn;
+	char *inpt_cpy, *delim = " \n", *tkn, **av;
 	int i = 0, j, tkns = 0;
 
 	inpt_cpy = malloc(sizeof(char) * (_strlen(usr_input) + 1));
@@ -42,7 +41,7 @@ char **parse_input(char **av, char *usr_input)
 			{
 				free(av[j]);
 			}
-			free(av[i]);
+			free(av);
 			return (NULL);
 		}
 		_strcpy(av[i], tkn);

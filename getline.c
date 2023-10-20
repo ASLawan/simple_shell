@@ -17,14 +17,20 @@ char *get_usr_input(void)
 		perror("malloc");
 		return (NULL);
 	}
-	chars_read = read(1, line, len);
+	chars_read = read(0, line, len);
 
 	if (chars_read == -1)
 	{
 		perror("Error");
+		free(line);
 		return (NULL);
 	}
-
+	if (chars_read == 0)
+	{
+		free(line);
+		return (NULL);
+	}
+	line[chars_read] = '\0';
 	/*free(line);*/
 	return (line);
 

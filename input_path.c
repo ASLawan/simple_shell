@@ -12,6 +12,8 @@ char *get_input_path(char *input)
 	char *tkn, *delim = ":";
 	int inpt_len, path_tkn_len;
 
+	if (stat(input, &st) == 0)
+		return (strdup(input));
 	inpt_path = _getenv("PATH");
 	if (inpt_path)
 	{
@@ -50,11 +52,7 @@ char *get_input_path(char *input)
 				tkn = _strtok(NULL, delim);
 			}
 		}
-		if (stat(input, &st) == 0)
-		{
-			free(inpt_path_cpy);
-			return (input);
-		}
+		free(inpt_path_cpy);
 		return (NULL);
 	}
 	return (NULL);
