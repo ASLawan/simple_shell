@@ -1,42 +1,55 @@
 #include "shell.h"
+
+int non_interact(char **av);
+
 /**
  * non_interact - noninteractive shell
  * @av: arg array
  * Return: 0
  */
+
 int non_interact(char **av)
 {
 	char *line = NULL, *tkn = NULL;
-	ssize_t chs, BUFFER = 1024;
+	size_t BUFFER = 1024;
+	ssize_t chs;
 	pid_t pid;
 	int status;
 
-	line = malloc(sizeof(char) * BUFFER);
+	line = (char *)malloc(BUFFER);
 	if (line == NULL)
 	{
-		free(line);
+		perror("Memory allocation failed");
 		return (-1);
 	}
-	chs = read(0, line, BUFFER);
+
+	chs = read(STDIN_FILENO, line, BUFFER);
 	if (chs == -1)
 	{
+		perror("Read error");
 		free(line);
 		_printstr("\n");
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
+
 	line[chs] = '\0';
 	tkn = strtok(line, " \n");
 	av[0] = tkn;
 	pid = fork();
+
 	if (pid < 0)
 	{
-		perror("./shell");
+		perror("Fork failed");
 	}
 	else if (pid == 0)
 	{
-		if (execve(av[0], av, environ) == -1)
+		char *new_environ[] = { NULL };
+
+		if (execve(av[0], av, new_environ) == -1)
 		{
-			perror("./shell");
+			perror("Execution error");
+			free(line);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
