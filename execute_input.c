@@ -30,7 +30,6 @@ int execute_input(char *usr_input)
 				{
 					free(inpt_to_execute);
 					perror("Error");
-				
 				}
 			}
 			else
