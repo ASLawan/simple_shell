@@ -18,7 +18,6 @@ char check_space(char *input)
 }
 /**
  * main - program entry point
- * @av: arguments array
  * Return: 0, always (success)
  */
 int main(void)
