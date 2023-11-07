@@ -1,12 +1,12 @@
-#LINKED LISTS PROJECT
-##SINGLY LINKED LISTS
-This is simple project on singly linked lists  
-While learning c, i just made this program to practice on singly linked lists  
+# LINKED LISTS PROJECT  
+## SINGLY LINKED LISTS  
+This is simple project on singly linked lists    
+While learning c, i just made this program to practice on singly linked lists    
 This program involves the following actions:  
   
 - Dynamically create a linked list  
 
-- Add new nodes to the list  
+- Add new nodes to the list   
 -> Add at the beginning  
 -> Add at the end  
 -> Add at any given position  
@@ -18,11 +18,11 @@ This program involves the following actions:
  
 - Reverse the list  
 
-##Usage
+## Usage  
 Compile the program, using all the files present to get your executable  
 Use the executable to explore the program  
   
-##Contribution
+## Contribution  
 Please feel free to contribute to the project, make suggestions.  
 
 
